@@ -1,6 +1,6 @@
 <div class="row justify-content-center align-items-center">
   <div class="col-md-12">
-    <form nz-form class="login-form" (ngSubmit)="submitForm()">
+    <form nz-form class="login-form" [formGroup]="validateForm" (ngSubmit)="submitForm()">
         <nz-form-item>
           <nz-form-control>
             <nz-input-group [nzPrefix]="prefixUser">
