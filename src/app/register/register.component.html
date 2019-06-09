@@ -1,6 +1,25 @@
 <div class="row justify-content-center align-items-center">
   <div class="col-md-8 register-form">
     <form [formGroup]="registerForm" (ngSubmit)="submitForm()">
+      <!-- Username Field -->
+      <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="name">
+          Username
+        </nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24">
+          <input nz-input formControlName="name" id="name" />
+          <nz-form-explain
+            *ngIf="
+              registerForm.get('name')?.dirty &&
+              registerForm.get('name')?.errors
+            "
+          >
+            The input is not valid name!
+          </nz-form-explain>
+        </nz-form-control>
+      </nz-form-item>
+
+
       <!-- Email Field -->
       <nz-form-item>
         <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="email">
@@ -18,24 +37,6 @@
           </nz-form-explain>
         </nz-form-control>
       </nz-form-item>
-
-      <!-- Email Field -->
-      <nz-form-item>
-          <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="name">
-            Username
-          </nz-form-label>
-          <nz-form-control [nzSm]="14" [nzXs]="24">
-            <input nz-input formControlName="name" id="name" />
-            <nz-form-explain
-              *ngIf="
-                registerForm.get('name')?.dirty &&
-                registerForm.get('name')?.errors
-              "
-            >
-              The input is not valid name!
-            </nz-form-explain>
-          </nz-form-control>
-        </nz-form-item>
 
       <!-- Password field -->
       <nz-form-item>
