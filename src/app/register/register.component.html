@@ -4,7 +4,7 @@
       <!-- Username Field -->
       <nz-form-item>
         <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="name">
-          Username
+          Usuário
         </nz-form-label>
         <nz-form-control [nzSm]="14" [nzXs]="24">
           <input nz-input formControlName="name" id="name" />
@@ -14,7 +14,7 @@
               registerForm.get('name')?.errors
             "
           >
-            The input is not valid name!
+            Forneça um nome válido!
           </nz-form-explain>
         </nz-form-control>
       </nz-form-item>
@@ -33,7 +33,7 @@
               registerForm.get('email')?.errors
             "
           >
-            The input is not valid E-mail!
+            Forneça um email válido!
           </nz-form-explain>
         </nz-form-control>
       </nz-form-item>
@@ -50,7 +50,7 @@
             (ngModelChange)="updateConfirmValidator()"
           />
           <nz-form-explain *ngIf="registerForm.get('password')?.dirty && registerForm.get('password')?.errors"
-            >Please input your password!</nz-form-explain
+            >Forneça uma senha válida!</nz-form-explain
           >
         </nz-form-control>
       </nz-form-item>
@@ -64,10 +64,10 @@
             *ngIf="registerForm.get('checkPassword')?.dirty && registerForm.get('checkPassword')?.errors"
           >
             <ng-container *ngIf="registerForm.get('checkPassword')?.hasError('required')">
-              Please confirm your password!
+              Por favor confirme sua senha!
             </ng-container>
             <ng-container *ngIf="registerForm.get('checkPassword')?.hasError('confirm')">
-              Two passwords that you enter is inconsistent!
+              As senhas fornecidas não são iguais!
             </ng-container>
           </nz-form-explain>
         </nz-form-control>
@@ -77,6 +77,9 @@
       <nz-form-item nz-row style="margin-bottom:8px;">
           <nz-form-control [nzSpan]="14" [nzOffset]="6">
             <button nz-button nzType="primary">Criar conta</button>
+          </nz-form-control>
+          <nz-form-control [nzSpan]="14" [nzOffset]="6">
+            <button routerLink="/login" nz-button nzType="secondary">Voltar</button>
           </nz-form-control>
         </nz-form-item>
       </form>

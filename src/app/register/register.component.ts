@@ -15,6 +15,11 @@ export class RegisterComponent implements OnInit {
 
   async submitForm() {
     const registerModel = new RegisterModel();
+
+    if (! this.registerForm.valid) {
+      alert('Formulário incompleto');
+      return;
+    }
     
     registerModel.email = this.registerForm.value.email;
     registerModel.name = this.registerForm.value.name;
@@ -23,7 +28,9 @@ export class RegisterComponent implements OnInit {
 
     try {
       const response = await this.api.register(registerModel);
-      console.log(response);
+      if (response)
+        alert('Conta criada com sucesso, agora você já pode acessar o sistema');
+        
     } catch (error) {
       alert(error.error.message)
     }
