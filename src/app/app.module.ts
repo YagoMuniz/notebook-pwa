@@ -11,12 +11,13 @@ import { PageComponent } from './page/page.component';
 // Services
 import { ApiService } from './services/api.service';
 import { NgZorroAntdModule, NZ_I18N, pt_BR } from 'ng-zorro-antd';
-import { FormsModule, FormBuilder } from '@angular/forms';
+import { FormsModule, FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { registerLocaleData } from '@angular/common';
 import pt from '@angular/common/locales/pt';
 import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 registerLocaleData(pt);
 
@@ -24,7 +25,8 @@ registerLocaleData(pt);
   declarations: [
     AppComponent,
     PageComponent,
-    LoginComponent
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +34,8 @@ registerLocaleData(pt);
     NgZorroAntdModule,
     FormsModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ReactiveFormsModule
   ],
   providers: [
     ApiService,

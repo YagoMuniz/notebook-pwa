@@ -1,0 +1,11 @@
+.container-fluid,
+.row {
+  height: 100%;
+}
+
+register-form {
+  &.col-md-12 {
+    display: flex;
+    justify-content: center;
+  }
+}

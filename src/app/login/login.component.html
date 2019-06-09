@@ -1,39 +1,37 @@
-<div class="container-fluid">
-  <div class="row justify-content-center align-items-center">
-    <div class="col-md-12">
-      <form nz-form class="login-form" (ngSubmit)="submitForm()">
-          <nz-form-item>
-            <nz-form-control>
-              <nz-input-group [nzPrefix]="prefixUser">
-                <input type="text" nz-input placeholder="Username" />
-              </nz-input-group>
-              <nz-form-explain *ngIf="validateForm.get('userName')?.dirty && validateForm.get('userName')?.errors">
-                Por favor informe o username!
-              </nz-form-explain>
-            </nz-form-control>
-          </nz-form-item>
-          <nz-form-item>
-            <nz-form-control>
-              <nz-input-group [nzPrefix]="prefixLock">
-                <input type="password" nz-input placeholder="Password" />
-              </nz-input-group>
-              <nz-form-explain *ngIf="validateForm.get('password')?.dirty && validateForm.get('password')?.errors">
-                Por favor informe uma senha!
-              </nz-form-explain>
-            </nz-form-control>
-          </nz-form-item>
-          <nz-form-item>
-            <nz-form-control>
-              <button nz-button class="login-form-button" [nzType]="'primary'">Entrar</button>
-              <label nz-checkbox>
-                <span>Lembrar-me</span>
-              </label>
-              <!-- <a class="login-form-forgot" class="login-form-forgot">Esqueci a senha</a> <br>
-              <a class="text-center" href="">Criar conta!</a> -->
-            </nz-form-control>
-          </nz-form-item>
-      </form>
-    </div>
+<div class="row justify-content-center align-items-center">
+  <div class="col-md-12">
+    <form nz-form class="login-form" (ngSubmit)="submitForm()">
+        <nz-form-item>
+          <nz-form-control>
+            <nz-input-group [nzPrefix]="prefixUser">
+              <input type="text" nz-input placeholder="Username" />
+            </nz-input-group>
+            <nz-form-explain *ngIf="validateForm.get('userName')?.dirty && validateForm.get('userName')?.errors">
+              Por favor informe o username!
+            </nz-form-explain>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-control>
+            <nz-input-group [nzPrefix]="prefixLock">
+              <input type="password" nz-input placeholder="Password" />
+            </nz-input-group>
+            <nz-form-explain *ngIf="validateForm.get('password')?.dirty && validateForm.get('password')?.errors">
+              Por favor informe uma senha!
+            </nz-form-explain>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-control>
+            <button nz-button class="login-form-button" [nzType]="'primary'">Entrar</button>
+            <label nz-checkbox>
+              <span>Lembrar-me</span>
+            </label>
+            <!-- <a class="login-form-forgot" class="login-form-forgot">Esqueci a senha</a> <br> -->
+            <a class="text-center" routerLink="/register" >Criar conta!</a>
+          </nz-form-control>
+        </nz-form-item>
+    </form>
   </div>
 </div>
 <ng-template #prefixUser><i nz-icon type="user"></i></ng-template>
