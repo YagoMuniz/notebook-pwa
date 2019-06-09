@@ -1,10 +1,19 @@
+// Overriding
 .container-fluid, .row {
   height: 100%;
+}
+
+.login-form {
+  width: 300px;
 }
 
 .col-md-12 {
   display: flex;
   justify-content: center;
+}
+
+.ant-form-item {
+  margin-bottom: 12px !important;
 }
 
 .login-form {
