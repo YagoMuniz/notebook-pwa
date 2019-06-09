@@ -4,7 +4,7 @@
         <nz-form-item>
           <nz-form-control>
             <nz-input-group [nzPrefix]="prefixUser">
-              <input type="text" nz-input placeholder="Username" />
+              <input type="text" formControlName="userName" nz-input placeholder="Username" />
             </nz-input-group>
             <nz-form-explain *ngIf="validateForm.get('userName')?.dirty && validateForm.get('userName')?.errors">
               Por favor informe o username!
@@ -14,7 +14,7 @@
         <nz-form-item>
           <nz-form-control>
             <nz-input-group [nzPrefix]="prefixLock">
-              <input type="password" nz-input placeholder="Password" />
+              <input type="password" formControlName="password" nz-input placeholder="Password" />
             </nz-input-group>
             <nz-form-explain *ngIf="validateForm.get('password')?.dirty && validateForm.get('password')?.errors">
               Por favor informe uma senha!
@@ -24,11 +24,7 @@
         <nz-form-item>
           <nz-form-control>
             <button nz-button class="login-form-button" [nzType]="'primary'">Entrar</button>
-            <label nz-checkbox>
-              <span>Lembrar-me</span>
-            </label>
-            <!-- <a class="login-form-forgot" class="login-form-forgot">Esqueci a senha</a> <br> -->
-            <a class="text-center" routerLink="/register" >Criar conta!</a>
+            <button nz-button routerLink="/register" class="login-form-button" [nzType]="'secondary'">Criar Conta</button>
           </nz-form-control>
         </nz-form-item>
     </form>
