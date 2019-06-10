@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { ApiService } from "../services/api.service";
+import { Router } from '@angular/router';
 
 @Component({
   selector: "app-login",
@@ -27,13 +28,15 @@ export class LoginComponent implements OnInit {
         this.validateForm.value.password
       );
   
-      console.log(response);
+      this.router.navigateByUrl('home');
     } catch (error) {
       console.log(error);
     }
   }
 
-  constructor(private fb: FormBuilder, private api: ApiService) {}
+  constructor(private fb: FormBuilder,
+              private router: Router,
+              private api: ApiService) {}
 
   ngOnInit(): void {
     this.validateForm = this.fb.group({
