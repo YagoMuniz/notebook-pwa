@@ -66,6 +66,14 @@ export class ApiService {
       .toPromise();
   }
 
+  loadNotebookById(id: string): Promise<any> {
+    return this.http
+      .get(this.baseUrl + this.endpoints.NOTEBOOKS + `/${id}`, {
+        headers: this.getHeaders()
+      })
+      .toPromise();
+  }
+
   createNotebook(notebook: Notebook): Promise<any> {
     return this.http
       .post(this.baseUrl + this.endpoints.NOTEBOOKS, notebook, {
