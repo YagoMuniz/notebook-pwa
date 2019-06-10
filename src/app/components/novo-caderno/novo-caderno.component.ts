@@ -33,7 +33,6 @@ export class NovoCadernoComponent implements OnInit {
 
       const allNotebooks = await this.api.loadNotebooks();
       this.api.setNotebookObs(allNotebooks);
-
     } catch (error) {
       this.message.error(error.message);
       console.log(error);
