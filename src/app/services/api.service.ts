@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders, HttpHandler } from "@angular/common/http";
-import { Observable } from "rxjs";
+import { Observable, Subject } from "rxjs";
 import { map } from "rxjs/operators";
 import { RegisterModel } from "../register/register.model";
 import { Notebook } from "../components/novo-caderno/notebook.model";
@@ -16,6 +16,8 @@ export class ApiService {
     LOGIN: "auth",
     NOTEBOOKS: "notebooks"
   };
+
+  private notebooks = new Subject<Array<Notebook>>();
 
   constructor(private http: HttpClient) {}
 
@@ -70,6 +72,14 @@ export class ApiService {
         headers: this.getHeaders()
       })
       .toPromise();
+  }
+
+  getNotebookObs(): Observable<Array<Notebook>> {
+    return this.notebooks.asObservable();
+  }
+
+  setNotebookObs(nb: Array<Notebook>) {
+    this.notebooks.next(nb);
   }
 
   private getHeaders(): HttpHeaders {

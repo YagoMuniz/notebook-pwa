@@ -30,6 +30,10 @@ export class NovoCadernoComponent implements OnInit {
     try {
       const response = await this.api.createNotebook(this.cadernoForm.value);
       if (response) this.message.success("Notebook Criado com sucesso!");
+
+      const allNotebooks = await this.api.loadNotebooks();
+      this.api.setNotebookObs(allNotebooks);
+
     } catch (error) {
       this.message.error(error.message);
       console.log(error);
