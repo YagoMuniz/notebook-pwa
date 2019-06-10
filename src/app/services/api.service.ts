@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { HttpClient, HttpHeaders, HttpHandler } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { map } from "rxjs/operators";
 import { RegisterModel } from "../register/register.model";
@@ -12,7 +12,8 @@ export class ApiService {
   private endpoints = {
     ACCESS_TOKEN: "qpnYKkKXDH8126YEOjqMRrrWXrI5f1wV",
     USERS: "users",
-    LOGIN: "auth"
+    LOGIN: "auth",
+    NOTEBOOKS: "notebooks"
   };
 
   constructor(private http: HttpClient) {}
@@ -50,5 +51,15 @@ export class ApiService {
         return user;
       }))
       .toPromise();
+  }
+
+  loadNotebooks() :Promise<any> {
+    const httpHeaders = new HttpHeaders({
+      'Authorization': 'Bearer ' + localStorage.getItem('current_auth')
+    });
+
+    return this.http.get(this.baseUrl + this.endpoints.NOTEBOOKS, {
+      headers: httpHeaders
+    }).toPromise();
   }
 }

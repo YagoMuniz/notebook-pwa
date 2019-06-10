@@ -9,15 +9,26 @@ import { Router } from '@angular/router';
 })
 export class SidebarComponent implements OnInit {
 
+  notebooks: any;
   constructor(private api: ApiService,
               private router: Router) { }
 
-  ngOnInit() {
+  async ngOnInit() {
+    await this.loadNotebooks();
   }
 
   async logout() {
     await this.api.logout();
     this.router.navigateByUrl('login');
+  }
+
+  async loadNotebooks() {
+    try {
+      this.notebooks = await this.api.loadNotebooks();
+      console.log(this.notebooks)
+    } catch (error) {
+
+    }
   }
 
 }

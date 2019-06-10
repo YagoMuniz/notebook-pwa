@@ -20,6 +20,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { registerLocaleData } from '@angular/common';
 import pt from '@angular/common/locales/pt';
+import { NovoCadernoComponent } from './components/novo-caderno/novo-caderno.component';
 
 registerLocaleData(pt);
 
@@ -30,7 +31,8 @@ registerLocaleData(pt);
     LoginComponent,
     RegisterComponent,
     SidebarComponent,
-    HomeComponent
+    HomeComponent,
+    NovoCadernoComponent
   ],
   imports: [
     BrowserModule,
