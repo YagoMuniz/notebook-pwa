@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders, HttpHandler } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { map } from "rxjs/operators";
 import { RegisterModel } from "../register/register.model";
+import { Notebook } from "../components/novo-caderno/notebook.model";
 
 @Injectable({
   providedIn: "root"
@@ -27,39 +28,53 @@ export class ApiService {
 
   logout(): Promise<any> {
     return Promise.resolve(() => {
-      localStorage.removeItem('current_auth');
-      localStorage.removeItem('loggedUser');
+      localStorage.removeItem("current_auth");
+      localStorage.removeItem("loggedUser");
     });
   }
 
   login(username: string, password: string): Promise<any> {
     const httpHeaders = new HttpHeaders({
-      'Authorization': "Basic " + window.btoa(username + ":" + password)
+      Authorization: "Basic " + window.btoa(username + ":" + password)
     });
 
     return this.http
       .post<any>(
         this.baseUrl + this.endpoints.LOGIN,
-        { 'access_token': this.endpoints.ACCESS_TOKEN },
+        { access_token: this.endpoints.ACCESS_TOKEN },
         { headers: httpHeaders }
       )
-      .pipe(map(user => {
-        if (user) {
-          localStorage.setItem("current_auth", user.token);
-          localStorage.setItem("loggedUser", JSON.stringify(user.user));
-        }
-        return user;
-      }))
+      .pipe(
+        map(user => {
+          if (user) {
+            localStorage.setItem("current_auth", user.token);
+            localStorage.setItem("loggedUser", JSON.stringify(user.user));
+          }
+          return user;
+        })
+      )
       .toPromise();
   }
 
-  loadNotebooks() :Promise<any> {
-    const httpHeaders = new HttpHeaders({
-      'Authorization': 'Bearer ' + localStorage.getItem('current_auth')
-    });
+  loadNotebooks(): Promise<any> {
+    return this.http
+      .get(this.baseUrl + this.endpoints.NOTEBOOKS, {
+        headers: this.getHeaders()
+      })
+      .toPromise();
+  }
 
-    return this.http.get(this.baseUrl + this.endpoints.NOTEBOOKS, {
-      headers: httpHeaders
-    }).toPromise();
+  createNotebook(notebook: Notebook): Promise<any> {
+    return this.http
+      .post(this.baseUrl + this.endpoints.NOTEBOOKS, notebook, {
+        headers: this.getHeaders()
+      })
+      .toPromise();
+  }
+
+  private getHeaders(): HttpHeaders {
+    return new HttpHeaders({
+      Authorization: "Bearer " + localStorage.getItem("current_auth")
+    });
   }
 }

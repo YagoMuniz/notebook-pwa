@@ -9,7 +9,7 @@
       <nz-form-label>Nome</nz-form-label>
       <nz-form-control>
         <input nz-input formControlName="name"/>
-        <nz-form-explain>
+        <nz-form-explain
           *ngIf="
             cadernoForm.get('name')?.dirty && cadernoForm.get('name')?.errors
           "
