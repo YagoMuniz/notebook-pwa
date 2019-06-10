@@ -10,7 +10,7 @@
   <li nz-submenu>
     <span title><i nz-icon nzType="form"></i> Cadernos</span>
     <ul>
-      <li *ngFor="let n of notebooks" nz-menu-item (click)="openNotebook(n)">{{n.name}}</li>
+      <li *ngFor="let n of notebooks" (click)="openNotebook(n)" nz-menu-item>{{n.name}}</li>
     </ul>
   </li>
   <li nz-submenu>

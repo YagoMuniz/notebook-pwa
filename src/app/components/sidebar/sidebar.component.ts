@@ -34,7 +34,7 @@ export class SidebarComponent implements OnInit, OnDestroy {
     this.router.navigateByUrl("login");
   }
 
-  openNotebook(notebook: Notebook) {
-    // this.router.navigateByUrl('', { queryParams: notebook })
+  openNotebook(n: Notebook) {
+    this.router.navigateByUrl('home/notebook/' + n.id);
   }
 }
