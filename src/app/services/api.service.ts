@@ -24,6 +24,13 @@ export class ApiService {
       .toPromise();
   }
 
+  logout(): Promise<any> {
+    return Promise.resolve(() => {
+      localStorage.removeItem('current_auth');
+      localStorage.removeItem('loggedUser');
+    });
+  }
+
   login(username: string, password: string): Promise<any> {
     const httpHeaders = new HttpHeaders({
       'Authorization': "Basic " + window.btoa(username + ":" + password)

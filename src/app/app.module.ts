@@ -6,7 +6,11 @@ import { AppRoutingModule } from './app-routing.module';
 
 // Components
 import { AppComponent } from './app.component';
-import { PageComponent } from './page/page.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { HomeComponent } from './home/home.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { PageComponent } from './components/page/page.component';
 
 // Services
 import { ApiService } from './services/api.service';
@@ -16,8 +20,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { registerLocaleData } from '@angular/common';
 import pt from '@angular/common/locales/pt';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
 
 registerLocaleData(pt);
 
@@ -26,7 +28,9 @@ registerLocaleData(pt);
     AppComponent,
     PageComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    SidebarComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
