@@ -1,3 +1,65 @@
-<p>
-  novo-caderno works!
-</p>
+<nz-card nzTitle="Adicionar um novo Caderno">
+  <form
+    nz-form
+    [nzLayout]="'vertical'"
+    [formGroup]="cadernoForm"
+    (ngSubmit)="submitForm()"
+  >
+    <nz-form-item>
+      <nz-form-label>Nome</nz-form-label>
+      <nz-form-control>
+        <input nz-input formControlName="name"/>
+        <nz-form-explain>
+          *ngIf="
+            cadernoForm.get('name')?.dirty && cadernoForm.get('name')?.errors
+          "
+          >Por favor digite um nome válido!</nz-form-explain
+        >
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label>Titulo</nz-form-label>
+      <nz-form-control>
+        <input nz-input formControlName="title"/>
+        <nz-form-explain
+          *ngIf="
+            cadernoForm.get('title')?.dirty && cadernoForm.get('title')?.errors
+          "
+          >Por favor digite um título válido!</nz-form-explain
+        >
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label>Descrição</nz-form-label>
+      <nz-form-control>
+        <textarea nz-input formControlName="description"></textarea>
+        <nz-form-explain
+          *ngIf="
+            cadernoForm.get('description')?.dirty &&
+            cadernoForm.get('description')?.errors
+          "
+          >Por favor digite uma descrição válida!</nz-form-explain
+        >
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label>Quantidade de Páginas</nz-form-label>
+      <nz-form-control>
+        <input nz-input type="number" formControlName="number_of_pages" />
+        <nz-form-explain
+          *ngIf="
+            cadernoForm.get('number_of_pages')?.dirty &&
+            cadernoForm.get('number_of_pages')?.errors
+          "
+          >Número inválido!</nz-form-explain
+        >
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-control>
+          <button nz-button nzType="primary" [disabled]="!cadernoForm.valid">Criar</button>
+          <button nz-button (click)="resetForm($event)">Limpar Formulário</button>
+      </nz-form-control>
+    </nz-form-item>
+  </form>
+</nz-card>
