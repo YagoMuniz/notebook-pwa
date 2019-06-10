@@ -4,29 +4,15 @@
   style="width: 240px;"
   [nzTheme]="'light'"
 >
+  <li nz-menu-item routerLink="/home/novo-caderno">
+    <span title><i nz-icon nzType="form"></i> Adicionar </span>
+  </li>
   <li nz-submenu>
     <span title><i nz-icon nzType="form"></i> Cadernos</span>
     <ul>
-      <li nz-menu-item routerLink="/home/novo-caderno">Novo Caderno</li>
-      <li nz-menu-item>Option 5</li>
-      <li nz-menu-item>Option 6</li>
+      <li *ngFor="let n of notebooks" nz-menu-item (click)="openNotebook(n)">{{n.name}}</li>
     </ul>
   </li>
-  <!-- <li nz-submenu>
-    <span title><i nz-icon type="appstore"></i> Navigation Two</span>
-    <ul>
-      <li nz-menu-item>Option 5</li>
-      <li nz-menu-item>Option 6</li>
-      <li nz-submenu>
-        <span title>Submenu</span>
-        <ul>
-          <li nz-menu-item>Option 7</li>
-          <li nz-menu-item>Option 8</li>
-        </ul>
-      </li>
-    </ul>
-  </li>
--->
   <li nz-submenu>
     <span title><i nz-icon type="setting"></i> Minha Conta </span>
     <ul>
