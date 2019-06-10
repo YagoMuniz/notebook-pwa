@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder, Validators, FormControl } from "@angular/forms";
 import { RegisterModel } from './register.model';
 import { ApiService } from '../services/api.service';
+import { NzMessageService } from 'ng-zorro-antd';
 
 @Component({
   selector: "app-register",
@@ -11,7 +12,9 @@ import { ApiService } from '../services/api.service';
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private api: ApiService) {}
+  constructor(private fb: FormBuilder,
+              private message: NzMessageService,
+              private api: ApiService) {}
 
   async submitForm() {
     const registerModel = new RegisterModel();
@@ -20,6 +23,8 @@ export class RegisterComponent implements OnInit {
       alert('Formulário incompleto');
       return;
     }
+
+    const id = this.message.loading('Carregando...', { nzDuration: 0 }).messageId;
     
     registerModel.email = this.registerForm.value.email;
     registerModel.name = this.registerForm.value.name;
@@ -28,11 +33,14 @@ export class RegisterComponent implements OnInit {
 
     try {
       const response = await this.api.register(registerModel);
-      if (response)
+      if (response) {
+        this.message.remove(id);
         alert('Conta criada com sucesso, agora você já pode acessar o sistema');
+      }
         
     } catch (error) {
-      alert(error.error.message)
+      this.message.remove(id);
+      this.message.error(error.error.message)
     }
   }
 

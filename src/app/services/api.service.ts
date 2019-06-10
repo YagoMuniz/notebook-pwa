@@ -74,6 +74,14 @@ export class ApiService {
       .toPromise();
   }
 
+  editNotbookById(id: string, notebook: Notebook): Promise<any> {
+    return this.http
+      .put(this.baseUrl + this.endpoints.NOTEBOOKS + `/${id}`, notebook, {
+        headers: this.getHeaders()
+      })
+      .toPromise();
+  }
+
   createNotebook(notebook: Notebook): Promise<any> {
     return this.http
       .post(this.baseUrl + this.endpoints.NOTEBOOKS, notebook, {

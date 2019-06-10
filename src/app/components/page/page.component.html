@@ -1,15 +1,18 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-12" *ngIf="notebook">
       <div class="paper">
         <div class="lines">
-          <div class="text" *ngIf="notebook" contenteditable spellcheck="false">
-            {{ notebook.pages[pageToShow] }}
+          <div #elementeditable (blur)="onChange(elementeditable.innerText)" class="text" *ngIf="notebook" contenteditable spellcheck="false">
+            {{ notebook.pages[0] }}
           </div>
         </div>
         <div class="holes hole-top"></div>
         <div class="holes hole-middle"></div>
         <div class="holes hole-bottom"></div>
+        <p></p>
+        <button nz-button nzType="primary" (click)="onNext()" style="margin-right: 5px;">Voltar</button>
+        <button nz-button nzType="primary" (click)="onPrev()">Próximo</button>
       </div>
     </div>
   </div>
