@@ -3,8 +3,8 @@
     <div class="col-md-8">
       <div class="paper">
         <div class="lines">
-          <div class="text" contenteditable spellcheck="false">
-            {{ pageContent }}
+          <div class="text" *ngIf="notebook" contenteditable spellcheck="false">
+            {{ notebook.pages[pageToShow] }}
           </div>
         </div>
         <div class="holes hole-top"></div>
